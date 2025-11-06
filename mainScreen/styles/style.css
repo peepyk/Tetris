@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    background: linear-gradient(135deg, #08080a 0%, #0d0d10 50%, #08080a 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.5rem, 2vh, 2rem) 0;
+    user-select: none;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+h1 {
+    font-size: clamp(2rem, 6vw, 5rem);
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.1em;
+}
+h6 {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#start {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    z-index: 200;
+    cursor: default;
+    user-select: none;
+    opacity: 1;
+    transition: 3s opacity;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background: rgba(10, 10, 15, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    min-width: clamp(120px, 15vw, 180px);
+}
+
+#startH2 {
+    margin: 0;
+    min-width: 3ch;
+    display: inline-block;
+}
+
+#lineCounterAndTimer {
+    z-index: 45;
+    font-size: clamp(1rem, 2.5vw, 1.875rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    transition: 2s opacity;
+    color: white;
+    user-select: none;
+    padding: 1rem clamp(0.5rem, 2vw, 1rem);
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+#lineCounterAndTimer h2, h3 {
+    margin: clamp(0.25rem, 1vh, 0.5rem) 0;
+    font-family: 'Orbitron', 'Trebuchet MS', sans-serif;
+    text-align: right;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+#lineCounterAndTimer h3 {
+    font-size: 0.8em;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.smallerFont {
+    font-size: 0.65em;
+    font-weight: 500;
+}
+
+#holdAndTimeContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+#holdContainer {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(80px, 15vw, 180px);
+    height: clamp(80px, 15vh, 160px);
+    opacity: 0;
+    user-select: none;
+    transition: 2s opacity;
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+}
+
+#nextContainer {
+    width: clamp(80px, 15vw, 180px);
+    align-self: flex-start;
+    height: 100%;
+    display: grid !important;
+    justify-content: center;
+    align-content: space-evenly;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    opacity: 0;
+    user-select: none;
+    transition: 2s opacity;
+    gap: clamp(0.5rem, 2vh, 1rem);
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+}
+
+#nextContainer img, #holdContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#holdContainer img {
+    transform: scale(1.2);
+}
+
+#gameContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.5rem, 2vw, 2rem);
+    padding: clamp(0.5rem, 2vh, 1rem);
+    filter: blur(5px);
+    transition: 3s filter;
+    min-height: 0;
+}
+
+#gameScreen {
+    width: clamp(250px, 40vw, 400px);
+    height: 100%;
+    max-height: calc(100vh - clamp(1rem, 4vh, 4rem));
+    aspect-ratio: 1 / 2;
+    background: rgba(20, 20, 30, 0.8);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    position: relative;
+    flex-shrink: 1;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+#gameScreen::before,
+#gameScreen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+#gameScreen::before {
+    content: "";
+    background: linear-gradient(to right, rgba(100, 100, 120, 0.3) 1px, transparent 0px) repeat;
+    background-size: calc(100% / 10) 100%;
+}
+#gameScreen::after {
+    background: linear-gradient(to bottom, rgba(100, 100, 120, 0.3) 1px, transparent 0px) repeat;
+    background-size: 100% calc(100% / 20);
+    background-position: 0 0;
+}
+
+.whiteColor {
+    background-color: white;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.previewColor {
+    background-color: rgb(170, 170, 170);
+    opacity: 0.4;
+}
+
+.Icolor {
+    background-color: #31B283 !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+.Jcolor {
+    background-color: #4F3EA4 !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+.Lcolor {
+    background-color: #B36332 !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+.Ocolor {
+    background-color: #B39932 !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+.Scolor {
+    background-color: #B3333A !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+.Tcolor {
+    background-color: #A53E9B !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+.Zcolor {
+    background-color: #82B331 !important;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    #gameContainer {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    #gameScreen {
+        width: clamp(200px, 50vw, 300px);
+    }
+    
+    #holdContainer, #nextContainer {
+        width: clamp(60px, 12vw, 100px);
+    }
+    
+    #lineCounterAndTimer {
+        font-size: clamp(0.75rem, 2vw, 1rem);
+    }
+    
+    header {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #gameScreen {
+        width: clamp(180px, 60vw, 250px);
+    }
+}

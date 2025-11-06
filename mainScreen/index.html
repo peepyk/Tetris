@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="style" rel="stylesheet" href="styles/style.css">
+    <script defer src="javaScript/script.js"></script>
+    <title>Tetris</title>
+</head>
+<body>
+    <header>
+        <h1>Tetris</h1>
+    </header>
+    <div id="start">
+        <h2 id="startH2">Press enter to start</h2>
+    </div>
+
+    <div id="gameContainer">
+        <div id="holdAndTimeContainer">
+            <div id="holdContainer" class="hidden">
+                <img id="hold" src="assets/images/blank.png" alt="hold">
+            </div>
+            <div id="lineCounterAndTimer">
+                <h3>LINES</h3>
+                <h2 id="lineCounter">0<span class="smallerFont">/40</span></h2>
+                <h3>TIME</h3>
+                <h2 id="timer">0:00<span class="smallerFont">.000</span></h2>
+            </div>
+        </div>
+        <div id="gameScreen"></div>
+        <div id="gameBorder"></div>
+        <div id="nextContainer" class="hidden">
+            <img id="piece1" src="assets/images/blank.png" alt="preview">
+            <img id="piece2" src="assets/images/blank.png" alt="preview">
+            <img id="piece3" src="assets/images/blank.png" alt="preview">
+            <img id="piece4" src="assets/images/blank.png" alt="preview">
+            <img id="piece5" src="assets/images/blank.png" alt="preview">
+        </div>
+    </div>
+</body>
+</html>
