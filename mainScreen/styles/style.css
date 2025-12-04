@@ -178,7 +178,7 @@ h6 {
     width: clamp(250px, 40vw, 400px);
     height: 100%;
     max-height: calc(100vh - clamp(1rem, 4vh, 4rem));
-    aspect-ratio: 1 / 2;
+    aspect-ratio: 10 / 20;
     background: rgba(20, 20, 30, 0.8);
     display: grid;
     grid-template-columns: repeat(10, 1fr);
