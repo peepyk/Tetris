@@ -709,14 +709,15 @@ class Game {
         gameState.isGameOver = true;
         
         Timer.stop();
-        Renderer.clearAll();
         
-        // Clear all placed blocks from the screen
-        gameState.placedBlocks.forEach(block => {
-            if (block.element) {
-                block.element.remove();
+        // Clear all pieces immediately (placed blocks, active pieces, and ghost pieces)
+        const allBlocks = DOM.gameScreen.querySelectorAll('div');
+        allBlocks.forEach(block => {
+            if (block.parentNode) {
+                block.remove();
             }
         });
+        
         gameState.placedBlocks = [];
         
         DOM.gameContainer.style.filter = 'blur(5px)';
