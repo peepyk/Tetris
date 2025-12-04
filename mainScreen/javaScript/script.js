@@ -711,10 +711,18 @@ class Game {
         Timer.stop();
         Renderer.clearAll();
         
+        // Clear all placed blocks from the screen
+        gameState.placedBlocks.forEach(block => {
+            if (block.element) {
+                block.element.remove();
+            }
+        });
+        gameState.placedBlocks = [];
+        
         DOM.gameContainer.style.filter = 'blur(5px)';
         DOM.startH2.innerHTML = gameState.linesCleared >= GAME_CONFIG.LINE_GOAL 
-            ? `Time: ${DOM.timer.innerHTML}<br><h6>Press enter to start</h6>`
-            : 'Press enter to start';
+            ? `Time: ${DOM.timer.innerHTML}<br><h6>Press enter to restart</h6>`
+            : 'Press enter to restart';
         DOM.startElement.style.opacity = '1';
     }
 
@@ -750,8 +758,8 @@ class InputHandler {
     }
 
     static handleKeyDown(event) {
-        // Start game
-        if (event.key === 'Enter' && !gameState.hasStarted) {
+        // Start or restart game
+        if (event.key === 'Enter' && (!gameState.hasStarted || gameState.isGameOver)) {
             Game.reset();
             Game.start();
             return;
